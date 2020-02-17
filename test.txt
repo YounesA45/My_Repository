@@ -1,17 +1,2 @@
 hello this is test
-$ git config --global user.name "younesA45"
-
-
-$ git config --global user.email "rahazyounes@gmail.com"
-
-$ git clone https://github.com/YounesA45/My_Repository.git
-
-$ cd My_Repository
-
-$ git add test.txt
-
-$ git status
-
-$ git commit -m "first commit" test.txt
-
-$ git push -u origin master
+jdkdfjkldsjfklsdjf
