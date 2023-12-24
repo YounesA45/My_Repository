@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/tableDaccreditation', [PostAccreditationController::class, 'showPost'])->name('showPost');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
