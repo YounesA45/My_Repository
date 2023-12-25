@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostAccreditationController;
+use Illuminate\Auth\Middleware\Authenticate;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ use App\Http\Controllers\PostAccreditationController;
 
 Route::get('/', function () {
     return view('Accreditation.formulaire');
-});
+})->middleware('auth');
 Route::get('/tableDaccreditation', [PostAccreditationController::class, 'showPost'])->name('showPost');
 
 

@@ -1,4 +1,4 @@
-@extends('header.template')
+@extends('layouts.app')
 @section('content')
 
 <style>
