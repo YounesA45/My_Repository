@@ -10,12 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js']) 
 
 
     <!-- Required meta tags -->
@@ -33,35 +30,61 @@
 
 </head>
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+    body {
+        font-family: 'Roboto';
+        /* @import url(https://fonts.googleapis.com/css?family=Roboto:400,700); */
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
 
-.navbar {  
-        background-image:url({{asset('/storage/img/baaziz_header.png')}});
+    body:before {
+        content: ' ';
+        background-image:  url({{ asset('/storage/img/cover1.png') }});
         background-size: cover;
-        background-position: center; /* Center the background image */
         background-repeat: no-repeat;
-        min-height:15vh;}
-footer {
-  
-  margin-top:auto; 
-  
-} 
+        background-attachment: fixed;
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
 
+
+    }
+
+    .navbar {
+        background-image: url({{ asset('/storage/img/baaziz_header.png') }});
+        background-size: cover;
+        background-position: center;
+        /* Center the background image */
+        background-repeat: no-repeat;
+        min-height: 15vh;
+    }
+
+    footer {
+        background-image: url({{ asset('/storage/img/footer.png') }});
+        background-size: cover;
+        background-position: center;
+        /* Center the background image */
+        background-repeat: no-repeat;
+        margin-top: auto;
+
+    }
 </style>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-       
-           <div class="container-fluid">
+
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
-                  
+
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -81,7 +104,7 @@ footer {
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                <b><a class="nav-link" href="{{ route('login') }}">{{ __('Identification') }}</a></b>
+                                    <b><a class="nav-link" href="{{ route('login') }}">{{ __('Identification') }}</a></b>
                                 </li>
                             @endif
 
@@ -92,11 +115,11 @@ footer {
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                 <b>{{ Auth::user()->name }}</b> 
                                 </a>
-                        
+
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -118,17 +141,34 @@ footer {
         <main class="py-4">
             @yield('content')
         </main>
+
     </div>
     <br>
-<footer class="bg-light text-center" >
- 
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © {{ date('Y')}} Copyright:
-      <a class="text-dark" href="https:/www.mf.gov.dz/">جميع الحقوق محفوظة المديرية العامة للخزينة و التسيير المحاسبي للعمليات المالية للدولة</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
+    <footer class="bg-light text-center">
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © {{ date('Y') }} Copyright:
+            <b><a class="text-dark" href="https:/www.mf.gov.dz/">جميع الحقوق محفوظة المديرية العامة للخزينة و التسيير
+                المحاسبي للعمليات المالية للدولة</a></b>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+
 </body>
 
 </html>

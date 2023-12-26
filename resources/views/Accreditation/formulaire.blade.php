@@ -6,7 +6,7 @@
         display: none;
     }
 </style>
-<div class="container">
+<div class="container bg-light">
     <br>
     <h1 class="text-center">Demande D'accréditation</h1>
     <br>
