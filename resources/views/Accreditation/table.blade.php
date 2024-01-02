@@ -25,6 +25,7 @@
                     <th>Wilaya</th>
                     <th>N° Decision</th>
                     <th>Date Decision</th>
+                    <th>Statut</th>
                     <th>piece jointe</th>
                     <th>piece jointe</th>
                 </tr>
@@ -40,6 +41,7 @@
                     <td>boumerdes</td>
                     <td>0028</td>
                     <td>12/12/2022</td>
+                    <td>Traité</td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                 </tr>
@@ -53,6 +55,7 @@
                     <td>alger</td>
                     <td>0085</td>
                     <td>12/12/2023</td>
+                    <td>En cours</td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                 </tr>
@@ -66,6 +69,7 @@
                     <td>biskra</td>
                     <td>00012</td>
                     <td>12/12/2023</td>
+                    <td>En cours</td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                 </tr>
@@ -79,6 +83,7 @@
                     <td>Msila</td>
                     <td>00015</td>
                     <td>12/12/2023</td>
+                    <td>Rejeté</td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                 </tr>
@@ -92,6 +97,7 @@
                     <td>blida</td>
                     <td>0105</td>
                     <td>12/12/2023</td>
+                    <td>En cours</td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                     <td><i class="fa-regular fa-file fa-xl"></i></td>
                 </tr>
