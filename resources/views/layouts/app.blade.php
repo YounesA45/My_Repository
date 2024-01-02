@@ -56,16 +56,34 @@
 
 
     }
-
+   
     .navbar {
         background-image: url({{ asset('/storage/img/baaziz_header.png') }});
-        background-size: cover;
+        background-size:cover; 
         background-position: center;
         /* Center the background image */
         background-repeat: no-repeat;
         min-height: 15vh;
     }
 
+    .navbar {
+        background-image: url({{ asset('/storage/img/baaziz_header_2000.png') }});
+        background-size:cover; 
+        background-position: center;
+        /* Center the background image */
+        background-repeat: no-repeat;
+        min-height: 15vh;
+    }
+    @media only screen and (min-width: 300px) and (max-width: 900px) {
+        .navbar {
+        background-image: url({{ asset('/storage/img/baaziz_header_mobile.png') }});
+        background-size:cover; 
+        background-position: center;
+        /* Center the background image */
+        background-repeat: no-repeat;
+        min-height: 15vh;
+    }
+}
     footer {
         background-image: url({{ asset('/storage/img/footer.png') }});
         background-size: cover;

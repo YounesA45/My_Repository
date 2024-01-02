@@ -6,6 +6,7 @@
         display: none;
     }
 </style>
+@auth
 <div class="container bg-light">
     <br>
     <h1 class="text-center">Demande D'accréditation</h1>
@@ -17,12 +18,12 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputNumeroDenvoi">Numéro d'envoi :</label>
-                <input type="number" class="form-control" id="inputNumeroDenvoi" placeholder="numéro">
+                <label for="inputNumeroDenvoi">Numéro de l'envoi :</label>
+                <input type="number" class="form-control" id="inputNumeroDenvoi" placeholder="1234">
             </div>
 
             <div class="form-group col-md-6">
-                <label for="inputDateDenvoi">Date d'envoi :</label>
+                <label for="inputDateDenvoi">Date de l'envoi :</label>
                 <input type="date" class="form-control" id="inputDateDenvoi">
             </div>
 
@@ -42,11 +43,11 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputFamilyName">Nom :</label>
-                    <input type="text" class="form-control" id="inputFamilyName" placeholder="le nom">
+                    <input type="text" class="form-control" id="inputFamilyName" >
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputName">Prénom :</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="le prénom">
+                    <input type="text" class="form-control" id="inputName" >
                 </div>
             </div>
             <div class="form-row">
@@ -62,21 +63,21 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputNumeroDecision">Numéro de la décision :</label>
-                    <input type="number" class="form-control" id="inputNumeroDecision" placeholder="numéro">
+                    <label for="inputNumeroDecision">Numéro de la décision de nomination :</label>
+                    <input type="number" class="form-control" id="inputNumeroDecision" placeholder="1234">
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="inputDateDecision">Date de la décision :</label>
+                    <label for="inputDateDecision">Date de la décision de nomination :</label>
                     <input type="date" class="form-control" id="inputDateDecision">
                 </div>
 
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <p id="selectedFileName">Pièce jointe</p>
-                    <input type="file" id="fileInput" style="display: none;" />
-                    <label class="pl-3 pr-3 pt-2 pb-2" for="fileInput"
+                    <p id="selectedFileNameDemande">Pièce joindre copie de la demande :</p>
+                    <input type="file" id="fileDemande" style="display: none;" />
+                    <label class="pl-3 pr-3 pt-2 pb-2" for="fileDemande"
                         style="cursor: pointer; border: 1px solid #ccc; border-radius: 5px;">
                         <i class="fa-solid fa-file-arrow-up fa-xl"></i>
                     </label>
@@ -84,9 +85,9 @@
                 </div>
                 <div class="form-group col-md-6">
 
-                    <p id="selectedFileName2">Pièce jointe</p>
-                    <input type="file" id="fileInput2" style="display: none;" />
-                    <label class="pl-3 pr-3 pt-2 pb-2" for="fileInput2"
+                    <p id="selectedFileNameDecision">Pièce jointe copie de la décision de nomination :</p>
+                    <input type="file" id="fileDecision" style="display: none;" />
+                    <label class="pl-3 pr-3 pt-2 pb-2" for="fileDecision"
                         style="cursor: pointer; border: 1px solid #ccc; border-radius: 5px;">
                         <i class="fa-solid fa-file-arrow-up fa-xl"></i>
                     </label>
@@ -136,19 +137,19 @@
     </form>
 
 </div>
-
+@endauth
 <!-- Optional JavaScript -->
 
    
 <script>
  
-    document.getElementById('fileInput').addEventListener('change', function() {
+    document.getElementById('fileDemande').addEventListener('change', function() {
         var fileName = this.value.split('\\').pop(); // Extract file name
-        document.getElementById('selectedFileName').innerText = 'Fichier sélectionné: ' + fileName;
+        document.getElementById('selectedFileNameDemande').innerText = 'Fichier sélectionné: ' + fileName;
     });
-    document.getElementById('fileInput2').addEventListener('change', function() {
+    document.getElementById('fileDecision').addEventListener('change', function() {
         var fileName = this.value.split('\\').pop(); // Extract file name
-        document.getElementById('selectedFileName2').innerText = 'Fichier sélectionné: ' + fileName;
+        document.getElementById('selectedFileNameDecision').innerText = 'Fichier sélectionné: ' + fileName;
     });
 </script>
 @endsection
