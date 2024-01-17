@@ -18,20 +18,20 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputNumeroDenvoi">Numéro de l'envoi :</label>
-                <input type="number" class="form-control" id="inputNumeroDenvoi" placeholder="1234">
+                <label for="NumeroDenvoi">Numéro de l'envoi :</label>
+                <input type="number" class="form-control" id="NumeroDenvoi" placeholder="1234">
             </div>
 
             <div class="form-group col-md-6">
-                <label for="inputDateDenvoi">Date de l'envoi :</label>
-                <input type="date" class="form-control" id="inputDateDenvoi">
+                <label for="DateDenvoi">Date de l'envoi :</label>
+                <input type="date" class="form-control" id="DateDenvoi">
             </div>
 
         </div>
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="inputSender">Expéditeur :</label>
-                <input type="text" class="form-control" id="inputSender"
+                <label for="Sender">Expéditeur :</label>
+                <input type="text" class="form-control" id="Sender"
                     placeholder="EX: Directeur du commerce de la wilaya de M'sila">
             </div>
         </div>
@@ -42,34 +42,34 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputFamilyName">Nom :</label>
-                    <input type="text" class="form-control" id="inputFamilyName" >
+                    <label for="FamilyName">Nom :</label>
+                    <input type="text" class="form-control" id="FamilyName" >
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputName">Prénom :</label>
-                    <input type="text" class="form-control" id="inputName" >
+                    <label for="Name">Prénom :</label>
+                    <input type="text" class="form-control" id="Name" >
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputPoste">Poste :</label>
-                    <input type="text" class="form-control" id="inputPoste"
+                    <label for="Poste">Poste :</label>
+                    <input type="text" class="form-control" id="Poste"
                         placeholder="EX: Sous directeur du commerce">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputWilaya">Wilaya :</label>
-                    <input type="text" class="form-control" id="inputWilaya" placeholder="Alger">
+                    <label for="Wilaya">Wilaya :</label>
+                    <input type="text" class="form-control" id="Wilaya" placeholder="Alger">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputNumeroDecision">Numéro de la décision de nomination :</label>
-                    <input type="number" class="form-control" id="inputNumeroDecision" placeholder="1234">
+                    <label for="NumeroDecision">Numéro de la décision de nomination :</label>
+                    <input type="number" class="form-control" id="NumeroDecision" placeholder="1234">
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="inputDateDecision">Date de la décision de nomination :</label>
-                    <input type="date" class="form-control" id="inputDateDecision">
+                    <label for="DateDecision">Date de la décision de nomination :</label>
+                    <input type="date" class="form-control" id="DateDecision">
                 </div>
 
             </div>

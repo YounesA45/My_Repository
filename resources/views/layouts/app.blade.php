@@ -56,7 +56,7 @@
 
 
     }
-   
+
     .navbar {
         background-image: url({{ asset('/storage/img/baaziz_header.png') }});
         background-size:cover; 
@@ -94,6 +94,7 @@
 
     }
 </style>
+
 
 <body>
     <div id="app">
@@ -159,7 +160,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-
+ 
     </div>
     <br>
     <footer class="bg-light text-center">

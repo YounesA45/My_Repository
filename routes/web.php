@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostAccreditationController;
 use Illuminate\Auth\Middleware\Authenticate;
+use App\Http\Controllers\AccreditationController;
 
 
 /*
@@ -17,11 +18,11 @@ use Illuminate\Auth\Middleware\Authenticate;
 */
 
 Route::get('/', function () {
-    return view('Accreditation.formulaire');
+    return redirect()->route('accreditation.index');
 })->middleware('auth');
-Route::get('/tableDaccreditation', [PostAccreditationController::class, 'showPost'])->name('showPost');
+// Route::get('/tableDaccreditation', [PostAccreditationController::class, 'showPost'])->name('showPost');
 
-
+Route::resource('accreditation', AccreditationController::class)->middleware('auth');
 
 Auth::routes();
 
