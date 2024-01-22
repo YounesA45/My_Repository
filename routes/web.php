@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostAccreditationController;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\AccreditationController;
+use App\Http\Controllers\LocalizationController;
 
 
 /*
@@ -22,8 +23,13 @@ Route::get('/', function () {
 })->middleware('auth');
 // Route::get('/tableDaccreditation', [PostAccreditationController::class, 'showPost'])->name('showPost');
 
+ // // Accreditation Routes
 Route::resource('accreditation', AccreditationController::class)->middleware('auth');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Localization Routes
+
+Route::get("locale/{lange}",[LocalizationController::class,'setLang']);

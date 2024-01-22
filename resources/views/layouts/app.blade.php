@@ -140,6 +140,16 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="locale/en">
+                                        {{ __('Anglais') }}
+                                    </a>
+                                    <a class="dropdown-item" href="locale/fr">
+                                        {{ __('Français') }}
+                                    </a>
+                                    <a class="dropdown-item" href="locale/ar">
+                                        {{ __('Arabe') }}
+                                    </a>
+                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

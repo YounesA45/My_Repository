@@ -2,8 +2,7 @@
 @section('content')
     <div class="container">
 
-        <a class="btn btn-primary" href="{{ route('accreditation.create') }}">Ajouter</a>
-        <br>
+        <a class="btn btn-primary mb-3" href="{{ route('accreditation.create') }}">{{ __('index.Add') }}</a>
 
         @if ($message = Session::get('success'))
             <div class="alert alert-success" role="alert">
