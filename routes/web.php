@@ -5,6 +5,9 @@ use App\Http\Controllers\PostAccreditationController;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -33,3 +36,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Localization Routes
 
 Route::get("locale/{lange}",[LocalizationController::class,'setLang']);
+
+Route::resources([
+    'roles' => RoleController::class,
+    'users' => UserController::class,
+    'products' => ProductController::class,
+]);
