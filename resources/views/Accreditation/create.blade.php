@@ -10,7 +10,7 @@
             <br>
             <div class="row">
                 <div class="col-md-12">
-                    <a class="btn btn-primary" href="{{ route('accreditation.index') }}">All Accreditation</a>
+                    <a class="btn btn-primary" href="{{ route('accreditation.index') }}">Tous les accreditations</a>
                 </div>
             </div>
             <h1 class="text-center">Demande D'accréditation</h1>

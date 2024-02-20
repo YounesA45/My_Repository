@@ -38,21 +38,29 @@
     <div class="row justify-content-center">
 
         <div class="row border">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+            
 
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
+            <h5 class="text-center">Bonjour {{ Auth::user()->name }}</h5>
+
+
+            <div class="card card1">
                 <div class="card-body">
-                    
-
-                    {{ __('You are logged in!') }}
-
-                  
-                   <h1>vous n'avez pas encore la permission</h1>
-                    <p>&nbsp;</p>
+                    <a href="{{ route('accreditation.index')}}"><h2 class="card-text text-c">Consultations</h2>
+                    </a>
                 </div>
             </div>
-
+            <div class="card card2">
+                <div class="card-body">
+                <a href="{{ route('accreditation.create')}}"><h2 class="card-text text-c">Nouveau</h2>
+                </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

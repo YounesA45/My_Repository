@@ -38,7 +38,16 @@
                         <td>{{ $item->Wilaya }}</td>
                         <td>{{ $item->NumeroDecision }}</td>
                         <td>{{ $item->DateDecision }}</td>
-                        <td>{{ $item->Statut }}</td>
+                        
+                            @if($item->Statut == "Validé")
+                            <td style="background-color: chartreuse;">{{ $item->Statut }}</td>
+                            @elseif($item->Statut == "Rejeté")
+                            <td style="background-color: red">{{ $item->Statut }}</td>
+                            @elseif($item->Statut == "En attente")
+                            <td style="background-color:orange">{{ $item->Statut }}</td>
+                            @else
+                            <td>{{ $item->Statut }}</td>
+                            @endif
                         <td>
                             @isset($item->fileDemande)
                                 <a href="{{ asset('uploads/FileDemande/' . $item->fileDemande) }}" target="_blank"><i

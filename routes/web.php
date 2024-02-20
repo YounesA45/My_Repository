@@ -8,6 +8,7 @@ use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -21,17 +22,17 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('accreditation.index');
-})->middleware('auth');
+// Route::get('/', function () {
+//     return redirect()->route('accreditation.index');
+// })->middleware('auth');
 // Route::get('/tableDaccreditation', [PostAccreditationController::class, 'showPost'])->name('showPost');
 
  // // Accreditation Routes
 Route::resource('accreditation', AccreditationController::class)->middleware('auth');
-
+Route::resource('accreditations', AdminController::class)->middleware('auth');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');;
 
 // Localization Routes
 

@@ -20,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -31,7 +32,7 @@
 </head>
 <style>
     body {
-        font-family: 'Roboto';
+        /* font-family: 'Roboto'; */
         /* @import url(https://fonts.googleapis.com/css?family=Roboto:400,700); */
         margin: 0;
         padding: 0;
@@ -139,9 +140,12 @@
                             @canany(['create-user', 'edit-user', 'delete-user'])
                                 <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
                             @endcanany
-                            @canany(['create-product', 'edit-product', 'delete-product'])
-                                <li><a class="nav-link" href="{{ route('products.index') }}">Manage Products</a></li>
-                            @endcanany
+                            <!--    @canany(['create-product', 'edit-product', 'delete-product'])
+                             <li><a class="nav-link" href="{{ route('products.index') }}">Manage Products</a></li> 
+                            @endcanany -->
+                            @canany(['create-accreditation', 'edit-accreditation', 'delete-accreditation'])
+                                <li><a class="nav-link" href="{{ route('accreditation.index') }}">Manage Accreditation</a></li>
+                            @endcanany 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

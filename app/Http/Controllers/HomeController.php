@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -21,8 +25,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index ()
     {
-        return view('home');
+      
+       // dd(Auth()->user()->roles->pluck('name')[0] ?? '');
+        if (Auth()->user()->roles->pluck('name')[0]  === 'Super Admin')
+        return view('Admin.home');
+        if (Auth()->user()->roles->pluck('name')[0]  === 'Admin')
+        return view('Admin.home');
+        if (Auth()->user()->roles->pluck('name')[0]  === 'Accreditation Manager')
+        return view('User.home');
+     else return view('home');
     }
 }
