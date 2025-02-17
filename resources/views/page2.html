@@ -1,0 +1,63 @@
+     '        <span class="leftDiv" style="width:40%;float:left">'+
+     '            <span>Direction Générale du Trésor<br> et de la Gestion Comptable <br> des Opérations Financières de'+
+     '               l\'Etat</span>'+
+     '           <span>Direction de la Réglementation <br> et de l\'Exécution Comptable des Budgets</span>'+
+     '       </span>'+
+     '       <span style="width: 40%;float:right">'+
+     '           <span>المديرية العامة للخزينة والتسيير المحاسبي للعمليات المالية للدولة</span>'+
+     '           <hr style=" width: 20%;">'+
+     '           <span>قسم التسيير المحاسبي للعمليات المالية للخزينة العمومية</span>'+
+     '            <span>مديرية التنظيم والتنفيذ المحاسبي للميزانيات</span>'+
+     '            <span class="border" style="border :1px solid black">'+
+     '                <p class="text-center">N° &emsp;&emsp; DRECB/ &emsp;&emsp; SDRE</span>'+
+     '            </span>'+
+     '        </span>'+
+
+     var wordContent ='<!DOCTYPE html>'+
+     '<html lang="en"><head>'+
+       '  <meta charset="UTF-8">'+
+      '   <meta name="viewport" content="width=device-width, initial-scale=1.0">'+
+      '   <title>TELEX</title>'+
+     '</head>'+
+     '<body>'+
+     '    <div style="display:flex;justify-content:space-between;flex-direction:row;text-align:center;">'+
+          '        <div style="width:40%;float:left">'+
+              '            <p>Direction Générale du Trésor <br> et de la Gestion Comptable <br> des Opérations Financières de'+
+               '               l\'Etat</p>'+
+               '           <p>Direction de la Réglementation <br> et de l\'Exécution Comptable des Budgets</p>'+
+               '       </div>'+
+               '       <div style="width: 40%;float:right">'+
+               '           <p>المديرية العامة للخزينة والتسيير المحاسبي للعمليات المالية للدولة</p>'+
+               '           <hr style=" width: 20%;">'+
+               '           <p>قسم التسيير المحاسبي للعمليات المالية للخزينة العمومية</p>'+
+              '            <p>مديرية التنظيم والتنفيذ المحاسبي للميزانيات</p>'+
+              '            <div class="border" style="border :1px solid black">'+
+              '                <p class="text-center">N° &emsp;&emsp; DRECB/ &emsp;&emsp; SDRE</p>'+
+              '            </div>'+
+              '        </div>'+
+          
+          '    </div>'+
+          '    <h2 style="text-align: center;text-decoration: underline;">TELEX</h2>'+
+'    <table>'+
+'        <tr>'+
+ '           <th style="vertical-align:top;text-decoration: underline;">EXPEDITEUR:</th>'+
+'            <td>MINISTERE DES FINANCES DIRECTION GENERALE DU TRESOR ET DE LA GESTION COMPTABLE DES OPERATIONS'+
+'                FINANCIERES DE L\'ETAT DIVISION DE LA GESTION COMPTABLE DES OPERATIONS DU TRESOR PUBLIC</td>'+
+'        </tr>'+
+'        <tr>'+
+ '           <th  style="vertical-align:top;text-decoration: underline;">DESTINATAIRE:</th>'+
+ '           <td>MONSIEUR LE TRESORIER DE LA WILAYA DE <b>'+data['Wilaya'].toUpperCase()+'</b></td>'+
+'        </tr>'+
+'        <tr>'+
+'            <th style="vertical-align:top;text-decoration: underline;">COPIE POUR INFORMATION:</th>'+
+ '           <td><b>'+data['inputData'].toUpperCase()+'</b></td>'+
+'        </tr>'+
+'        <tr>'+
+ '           <th style="vertical-align:top;text-decoration: underline;">REFERENCE :</th>'+
+'            <td>DECRET EXECUTIF N 13-95 DU 26/02/2013 COMPLETANT LE DECRET EXECUTIF N°97-268 DU 21/07/1997 FIXANT LES'+
+ '               PROCEDURES RELATIVES A L\'ENGAGEMENT ET A L\'EXECUTION DES DEPENSES PUBLIQUES ET DELIMITANT LES'+
+ '               ATTRIBUTIONS ET LES RESPONSABILITES DES ORDONNATEURS</td>'+
+ '       </tr>'+
+'    </table>'+
+'</body>'+
+'</html>';

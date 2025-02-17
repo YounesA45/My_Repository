@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خريطة بلد بالجافاسكريبت</title>
+  <!-- Include Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map { height: 400px; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Include Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+  // Initialize the map
+  var map = L.map('map').setView([51.505, -0.09], 13);
+
+  // Load and add the tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1
+  }).addTo(map);
+
+  // Sample coordinates and names of areas
+  var areas = [
+    {name: "مثال 1", coordinates: [51.5, -0.09]},
+    {name: "مثال 2", coordinates: [51.49, -0.1]}
+  ];
+
+  // Add markers and bind popups
+  for (var i = 0; i < areas.length; i++) {
+    var area = areas[i];
+    L.marker(area.coordinates).addTo(map).bindPopup(area.name);
+  }
+</script>
+
+</body>
+</html>

@@ -22,9 +22,11 @@ return new class extends Migration
             $table->String('Wilaya');
             $table->bigInteger('NumeroDecision');
             $table->date('DateDecision');
-            $table->String('Statut')->default('En attente');
+            $table->String('Statut')->default('En cours de saisie');
             $table->String('fileDemande');
             $table->String('fileDecision');
+            $table->String('fileAccreditation')->nullable();
+            $table->String('Motif')->nullable();
             $table->timestamps();
         });
     }

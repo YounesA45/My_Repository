@@ -12,9 +12,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $accreditation = Accreditation::latest()->paginate(5);
-        return view('Admin.index',compact('accreditation'))
-                        ->with('i', (request()-> input('page',1)-2) * 5);
+        $accreditation = Accreditation::latest()->where('statut', '<>', 'En cours de saisie')->paginate(5);
+        return view('Admin.index', compact('accreditation'))
+            ->with('i', (request()->input('page', 1) - 2) * 5);
     }
 
     /**
@@ -22,7 +22,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('Accreditation.create');
+        return view('Admin.create');
     }
 
     /**
@@ -32,34 +32,34 @@ class AdminController extends Controller
     {
         //  dd($request->all());
         $request->validate([
-            'NumeroDenvoi'=>'required',
-            'DateDenvoi'=>'required',
-            'Sender'=>'required',
-            'FamilyName'=>'required',
-            'Name'=>'required',
-            'Poste'=>'required',
-            'Wilaya'=>'required',
-            'NumeroDecision'=>'required',
-            'DateDecision'=>'required',
-            'fileDemande'=>'required|mimes:jpeg,png,jpg,pdf|max:4096',
-            'fileDecision'=>'required|mimes:jpeg,png,jpg,pdf|max:4096'
+            'NumeroDenvoi' => 'required',
+            'DateDenvoi' => 'required',
+            'Sender' => 'required',
+            'FamilyName' => 'required',
+            'Name' => 'required',
+            'Poste' => 'required',
+            'Wilaya' => 'required',
+            'NumeroDecision' => 'required',
+            'DateDecision' => 'required',
+            'fileDemande' => 'required|mimes:jpeg,png,jpg,pdf|max:4096',
+            'fileDecision' => 'required|mimes:jpeg,png,jpg,pdf|max:4096'
         ]);
-        $input =$request->all();
-        if($fileDemande = $request->file('fileDemande')){
+        $input = $request->all();
+        if ($fileDemande = $request->file('fileDemande')) {
             $originalFileDemandeName = pathinfo($fileDemande->getClientOriginalName(), PATHINFO_FILENAME);
-            $profileFileDemande = date('YmdHis').".".$originalFileDemandeName.".".$fileDemande->getClientOriginalExtension();
-            $fileDemande->storeAs('uploads/FileDemande/',$profileFileDemande,'public');
+            $profileFileDemande = date('YmdHis') . "." . $originalFileDemandeName . "." . $fileDemande->getClientOriginalExtension();
+            $fileDemande->storeAs('uploads/FileDemande/', $profileFileDemande, 'public');
             $input['fileDemande'] = $profileFileDemande;
         }
-        if($fileDecision = $request->file('fileDecision')){ 
+        if ($fileDecision = $request->file('fileDecision')) {
             $originalfileDecisionName = pathinfo($fileDecision->getClientOriginalName(), PATHINFO_FILENAME);
-            $profileFileDecision = date('YmdHis').".".$originalfileDecisionName.".".$fileDecision->getClientOriginalExtension();
-            $fileDecision->storeAs('uploads/FileDecision/',$profileFileDecision,'public');
+            $profileFileDecision = date('YmdHis') . "." . $originalfileDecisionName . "." . $fileDecision->getClientOriginalExtension();
+            $fileDecision->storeAs('uploads/FileDecision/', $profileFileDecision, 'public');
             $input['fileDecision'] = $profileFileDecision;
         }
         Accreditation::create($input);
         return redirect()->route('accreditation.index')
-               ->with('success','Accreditation added successfully');
+            ->with('success', 'La demande d\'accréditation a été ajoutée avec succès');
     }
 
     /**
@@ -67,7 +67,7 @@ class AdminController extends Controller
      */
     public function show(Accreditation $accreditation)
     {
-        return view('Accreditation.show',compact('accreditation'));
+        return view('Accreditation.show', compact('accreditation'));
     }
 
     /**
@@ -75,7 +75,7 @@ class AdminController extends Controller
      */
     public function edit(Accreditation $accreditation)
     {
-        return view('Accreditation.edit',compact('accreditation'));
+        return view('Admin.edit', compact('accreditation'));
     }
 
     /**
@@ -86,21 +86,30 @@ class AdminController extends Controller
         // $request->validate([
         //     'statut' => 'required' // Add validation rules as needed
         // ]);
-    
-    
+
+
         // $input =$request->all();
         // dd($input);
         // $accreditation->update($input);
 
 
         $accreditation = Accreditation::find($id);
-      
+
+
+
+        if ($fileAccreditation = $request->file('fileAccreditation')) {
+            $originalfileAccreditation = pathinfo($fileAccreditation->getClientOriginalName(), PATHINFO_FILENAME);
+            $profilefileAccreditation = date('YmdHis') . "." . $originalfileAccreditation . "." . $fileAccreditation->getClientOriginalExtension();
+            $fileAccreditation->storeAs('uploads/FileAccreditation/', $profilefileAccreditation, 'public');
+            $input['fileAccreditation'] = $profilefileAccreditation;
+            $accreditation->fileAccreditation =  $input['fileAccreditation'];
+        }
+        //  $accreditation->update($input);
+
         $accreditation->statut = $request->statut;
-        
+        $accreditation->Motif = $request->Motif;
         $accreditation->save();
-        return redirect()->back()->with('success', 'Accreditation updated successfully');
-    
-        
+        return redirect()->route('accreditations.index')->with('success', ' La demande d\'accréditation a été mise à jour avec succès');
     }
 
     /**
@@ -110,8 +119,16 @@ class AdminController extends Controller
     {
         $accreditation->delete();
         return redirect()->route('Accreditation.index')
-        ->with('sussess','Accreditation deleted successfully');
+            ->with('sussess', ' La demande d\'accréditation a été supprimé avec succès');
+    }
+    public function fileWord(Request $request)
+    {
+        // Process the AJAX request
+        $inputData = $request->input('inputData');
+
+        // Perform any necessary logic (e.g., database operations)
+
+        // Return a response (e.g., JSON)
+        return response()->json(['message' => 'Success', 'data' => $inputData]);
     }
 }
-
-

@@ -31,9 +31,11 @@ class HomeController extends Controller
        // dd(Auth()->user()->roles->pluck('name')[0] ?? '');
         if (Auth()->user()->roles->pluck('name')[0]  === 'Super Admin')
         return view('Admin.home');
-        if (Auth()->user()->roles->pluck('name')[0]  === 'Admin')
+        if (Auth()->user()->roles->pluck('name')[0]  === 'validate and sign')
         return view('Admin.home');
-        if (Auth()->user()->roles->pluck('name')[0]  === 'Accreditation Manager')
+        if (Auth()->user()->roles->pluck('name')[0]  === 'Validate')
+        return view('User.home');
+        if (Auth()->user()->roles->pluck('name')[0]  === 'Sign')
         return view('User.home');
      else return view('home');
     }

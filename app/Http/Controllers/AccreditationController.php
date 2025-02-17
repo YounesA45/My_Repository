@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accreditation;
+use App\Models\Ministere;
 use Illuminate\Http\Request;
+
 
 class AccreditationController extends Controller
 {
@@ -12,11 +14,22 @@ class AccreditationController extends Controller
      */
     public function index()
     {
+        //$accreditation = Accreditation::latest()->paginate(5)->where("FamilyName","djelouli");
         $accreditation = Accreditation::latest()->paginate(5);
         return view('Accreditation.index',compact('accreditation'))
                         ->with('i', (request()-> input('page',1)-2) * 5);
     }
-
+    public function showAccreditation()
+    {
+        $accreditation = Accreditation::latest()->paginate(5);
+        return view('Admin.index',compact('accreditation'))
+                        ->with('i', (request()-> input('page',1)-2) * 5);
+    }
+    public function selectTypeAcc()
+    {
+       $ministeres = Ministere::all();
+        return view('User.typeAcc',compact('ministeres'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -24,7 +37,7 @@ class AccreditationController extends Controller
     {
         return view('Accreditation.create');
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      */
@@ -40,9 +53,9 @@ class AccreditationController extends Controller
             'Poste'=>'required',
             'Wilaya'=>'required',
             'NumeroDecision'=>'required',
-            'DateDecision'=>'required',
-            'fileDemande'=>'required|mimes:jpeg,png,jpg,pdf|max:4096',
-            'fileDecision'=>'required|mimes:jpeg,png,jpg,pdf|max:4096'
+            'DateDecision'=>'required'
+            // 'fileDemande' =>'required|mimes:jpeg,png,jpg,pdf|max:4096',
+           // 'fileDecision'=>'required|mimes:jpeg,png,jpg,pdf|max:4096'
         ]);
         $input =$request->all();
         if($fileDemande = $request->file('fileDemande')){
@@ -59,7 +72,7 @@ class AccreditationController extends Controller
         }
         Accreditation::create($input);
         return redirect()->route('accreditation.index')
-               ->with('success','Accreditation added successfully');
+               ->with('success','La demande d\'accréditation a été ajoutée avec succès');
     }
 
     /**
@@ -77,45 +90,72 @@ class AccreditationController extends Controller
     {
         return view('Accreditation.edit',compact('accreditation'));
     }
+    
+    public function valider( $id)
+    {
+        
+        $accreditation = Accreditation::findOrFail($id);
+        
+       
+        $accreditation->statut = "En cours de traitement";
+        
+        $accreditation->save();
+        return redirect()->route('accreditation.index')->with('success', 'La demande d\'accréditation a été mise à jour avec succès');
 
+    }
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Accreditation $accreditation)
-    {
-        $request->validate([
-            'NumeroDenvoi'=>'required',
-            'DateDenvoi'=>'required',
-            'Sender'=>'required',
-            'FamilyName'=>'required',
-            'Name'=>'required',
-            'Poste'=>'required',
-            'Wilaya'=>'required',
-            'NumeroDecision'=>'required',
-            'DateDecision'=>'required',
-            'fileDemande'=>'required|mimes:jpeg,png,jpg,pdf|max:4096',
-            'fileDecision'=>'required|mimes:jpeg,png,jpg,pdf|max:4096'
-        ]);
-        $input =$request->all();
-        if($fileDemande = $request->file('fileDemande')){
-            $destinationPath = '/FileDemande/'; 
-            $profileFile = date('YmdHis').".".$fileDemande->getClientOriginalExtension();
-            $fileDemande->move($destinationPath,$profileFile);
-            $input['fileDemande'] = $fileDemande;
-        }else{
-            unset( $input['fileDemande']);
-        }
-        if($fileDecision = $request->file('fileDecision')){
-            $destinationPath = '/FileDecision/'; 
-            $profileFile = date('YmdHis').".".$fileDecision->getClientOriginalExtension();
-            $fileDecision->move($destinationPath,$profileFile);
-            $input['fileDecision'] = $fileDecision;
-        }else{
-            unset( $input['fileDecision']);
-        }
-        $accreditation->update($input);
-        return redirect()->route('Accreditation.index')
-               ->with('sussess','Accreditation updated successfully');
+    public function update(Request $request, $id)
+    {  
+       
+        $accreditation = Accreditation::find($id);
+      
+        $accreditation->update($request->all());
+        
+
+        // if($fileAccreditation = $request->file('fileAccreditation')){ 
+        //     $originalfileAccreditation = pathinfo($fileAccreditation->getClientOriginalName(), PATHINFO_FILENAME);
+        //     $profilefileAccreditation = date('YmdHis').".".$originalfileAccreditation.".".$fileAccreditation->getClientOriginalExtension();
+        //     $fileAccreditation->storeAs('uploads/FileDecision/',$profilefileAccreditation,'public');
+        //     $input['fileAccreditation'] = $profilefileAccreditation;
+        // }
+       
+        // $accreditation->save();
+        return redirect()->route('accreditation.index')->with('success', 'La demande d\'accréditation a été mise à jour avec succès');
+
+        // $request->validate([
+        //     'NumeroDenvoi'=>'required',
+        //     'DateDenvoi'=>'required',
+        //     'Sender'=>'required',
+        //     'FamilyName'=>'required',
+        //     'Name'=>'required',
+        //     'Poste'=>'required',
+        //     'Wilaya'=>'required',
+        //     'NumeroDecision'=>'required',
+        //     'DateDecision'=>'required',
+        //    'statut'=>'required',
+        // ]);
+        // $input =$request->all();
+        // if($fileDemande = $request->file('fileDemande')){
+        //     $destinationPath = '/FileDemande/'; 
+        //     $profileFile = date('YmdHis').".".$fileDemande->getClientOriginalExtension();
+        //     $fileDemande->move($destinationPath,$profileFile);
+        //     $input['fileDemande'] = $fileDemande;
+        // }else{
+        //     unset( $input['fileDemande']);
+        // }
+        // if($fileDecision = $request->file('fileDecision')){
+        //     $destinationPath = '/FileDecision/'; 
+        //     $profileFile = date('YmdHis').".".$fileDecision->getClientOriginalExtension();
+        //     $fileDecision->move($destinationPath,$profileFile);
+        //     $input['fileDecision'] = $fileDecision;
+        // }else{
+        //     unset( $input['fileDecision']);
+        // }
+        // $accreditation->update($input);
+        // return redirect()->back()
+        //        ->with('sussess','Accreditation updated successfully');
     }
 
     /**
@@ -124,7 +164,7 @@ class AccreditationController extends Controller
     public function destroy(Accreditation $accreditation)
     {
         $accreditation->delete();
-        return redirect()->route('Accreditation.index')
-        ->with('sussess','Accreditation deleted successfully');
+        return redirect()->back()->with('sussess',' La demande d\'accréditation a été supprimé avec succès');
+       
     }
 }

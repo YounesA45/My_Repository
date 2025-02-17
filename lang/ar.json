@@ -219,5 +219,35 @@
     "Whoops!": "عذراً!",
     "Yes": "نعم",
     "You are logged in!": "لقد قمت بتسجيل الدخول!",
-    "You are receiving this email because we received a password reset request for your account.": "لقد استلمت هذا الإيميل لأننا استقبلنا طلباً لاستعادة كلمة مرور حسابك."
+    "You are receiving this email because we received a password reset request for your account.": "لقد استلمت هذا الإيميل لأننا استقبلنا طلباً لاستعادة كلمة مرور حسابك.",
+    "Shipment number":"رقم الارساليه",
+    "Date of sending":"تاريخ الإرسال",
+    "Sender":"المرسل",
+    "Family Name":"اللقب",
+    "First Name":"الإسم",
+    "Post":"مكتب",
+    "District":"ولاية",
+    "Decision Number":"رقم القرار",
+    "Date of Decision":"تاريخ القرار",
+    "Status":"الحالة",
+    "Request Attachment":"ملحق الطلب",
+    "Nomination Attachment":"ملحق التنصيب",
+    "TELEX Attachment":"ملحق تلكس",
+    "Pattern":"سبب الرفض",
+    "Rejeté":"مرفوض",
+    "En cours de saisie":"قيد الكتابة",
+    "En cours de traitement":"قيد المعالجة",
+    "Validé":"مقبول",
+    "Arabe":"عربي",
+    "Anglais":"إنجليزي",
+    "Français":"فرنسي",
+    "Welcome to the Accountants Accreditation Platform":"مرحبا بكم في منصة اعتماد المحاسبين",
+    "Consultation": "الإطلاع",
+    
+    "Hello, Mr. the Director of Regulation":"مرحبا ، السيد مدير التنظيم",
+    "General Directorate of the Treasury and Accounting":"المديرية العامة للخزينة و المحاسبة",
+    "Copyright":"جميع الحقوق محفوظة"
+
+
+
 }

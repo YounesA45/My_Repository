@@ -1,24 +1,26 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-
-    <a class="btn btn-primary mb-3" href="{{ route('accreditation.create') }}">{{ __('index.Add') }}</a>
-
-    <table class="table table-bordered text-center">
+<div class="container-fluid">
+<br>
+<br>
+    <table class="table table-bordered text-center ">
         <thead class="table-dark">
             <tr>
-                <th>Numéro d'envoi</th>
-                <th>Date d'envoi</th>
-                <th>Expéditeur</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Poste</th>
-                <th>Wilaya</th>
-                <th>N° Decision</th>
-                <th>Date Decision</th>
-                <th width="50%">Statut</th>
-                <th>piece jointe</th>
-                <th>piece jointe</th>
+            <th>{{ __('Shipment number') }}</th>
+                <th>{{__('Date of sending')}}</th>
+                <th>{{__('Sender')}}</th>
+                <th>{{__('Family Name')}}</th>
+                <th>{{__('First Name')}}</th>
+                <th>{{__('Post')}}</th>
+                <th>{{__('District')}}</th>
+                <th>{{__('Decision Number')}}</th>
+                <th>{{__('Date of Decision')}}</th>
+                <th>{{__('Status')}}</th>
+                <th>{{__('Request Attachment')}}</th>
+                <th>{{__('Nomination Attachment')}}</th>
+                <th>{{__('TELEX Attachment')}}</th>
+                <th>{{__('Pattern')}}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -35,25 +37,11 @@
                 <td>{{ $item->DateDecision }}</td>
 
                 @if($item->Statut == "Validé")
-                <td style="background-color: chartreuse;">{{ $item->Statut }}</td>
+                <td style="background-color: chartreuse;font-weight:bold;">{{__($item->Statut)}}</td>
                 @elseif($item->Statut == "Rejeté")
-                <td style="background-color: red">{{ $item->Statut }}</td>
-                @elseif($item->Statut == "En attente")
-                <td>
-                   
-                    <form action="{{route('accreditations.update',$item->id)}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <input type="hidden" name="id" value="{{ $item->id }}"> 
-                    <select name="statut" class="custom-select mb-3">
-                        <option value="{{ $item->Statut }}" selected>{{ $item->Statut }}</option>
-                        <option value="Validé">Validé</option>
-                        <option value="Rejeté">Rejeté</option>
-                    </select>
-                    <button type="submit" class="btn btn-primary">Valider</button>
-                </form>
-                    
-                </td>
+                <td style="background-color: red;font-weight:bold;">{{__($item->Statut)}}</td>
+                 @elseif($item->Statut == "En cours de traitement")
+                <td style="background-color:orange;font-weight:bold;">{{__($item->Statut)}}</td>
                 @else
                 <td>{{ $item->Statut }}</td>
                 @endif
@@ -67,6 +55,37 @@
                     <a href="{{ asset('uploads/FileDecision/' . $item->fileDecision) }}" target="_blank"><i class="fa-regular fa-file fa-xl"></i></a>
                     @endisset
                 </td>
+                <td>
+                    @if($item->Statut == "Validé")
+                    @isset($item->fileAccreditation)
+                    <a href="{{ asset('uploads/FileAccreditation/' . $item->fileAccreditation) }}" target="_blank"><i class="fa-regular fa-file fa-xl"></i></a>
+                    @endisset
+                    @endif
+                </td>
+                <td>
+                    @if($item->Statut == "Rejeté")
+                    {{ $item->Motif }}
+                    @endif
+                </td>
+                @if($item->Statut == "En cours de traitement")
+                <td>
+                   
+                    <!-- <form action="{{route('accreditations.update',$item->id)}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="id" value="{{ $item->id }}"> 
+                    <select name="statut" class="custom-select mb-3">
+                        <option value="{{ $item->Statut }}" selected>{{ $item->Statut }}</option>
+                        <option value="Validé">Validé</option>
+                        <option value="Rejeté">Rejeté</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                </form> -->
+                    <a class="btn btn-warning" href="{{ route('accreditations.edit',$item->id) }}"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                </td>
+                @else
+                <td></td>
+                @endif
             </tr>
             @endforeach
         </tbody>

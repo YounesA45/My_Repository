@@ -10,9 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    
+
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js']) 
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 
     <!-- Required meta tags -->
@@ -43,7 +43,7 @@
 
     body:before {
         content: ' ';
-        background-image:  url({{ asset('/storage/img/cover1.png') }});
+        background-image: url({{ asset('/storage/img/cover1.png') }});
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -60,7 +60,7 @@
 
     .navbar {
         background-image: url({{ asset('/storage/img/baaziz_header.png') }});
-        background-size:cover; 
+        background-size: cover;
         background-position: center;
         /* Center the background image */
         background-repeat: no-repeat;
@@ -69,22 +69,24 @@
 
     .navbar {
         background-image: url({{ asset('/storage/img/baaziz_header_2000.png') }});
-        background-size:cover; 
+        background-size: cover;
         background-position: center;
         /* Center the background image */
         background-repeat: no-repeat;
         min-height: 15vh;
     }
+
     @media only screen and (min-width: 300px) and (max-width: 900px) {
         .navbar {
-        background-image: url({{ asset('/storage/img/baaziz_header_mobile.png') }});
-        background-size:cover; 
-        background-position: center;
-        /* Center the background image */
-        background-repeat: no-repeat;
-        min-height: 15vh;
+            background-image: url({{ asset('/storage/img/baaziz_header_mobile.png') }});
+            background-size: cover;
+            background-position: center;
+            /* Center the background image */
+            background-repeat: no-repeat;
+            min-height: 15vh;
+        }
     }
-}
+
     footer {
         background-image: url({{ asset('/storage/img/footer.png') }});
         background-size: cover;
@@ -100,6 +102,9 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+
+        </nav>
+        <nav class="navbar-expand-md ">
 
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -140,16 +145,75 @@
                             @canany(['create-user', 'edit-user', 'delete-user'])
                                 <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
                             @endcanany
-                            <!--    @canany(['create-product', 'edit-product', 'delete-product'])
-                             <li><a class="nav-link" href="{{ route('products.index') }}">Manage Products</a></li> 
-                            @endcanany -->
+                            <!--  @canany(['create-product', 'edit-product', 'delete-product'])
+        <li><a class="nav-link" href="{{ route('products.index') }}">Manage Products</a></li>
+    @endcanany -->
                             @canany(['create-accreditation', 'edit-accreditation', 'delete-accreditation'])
-                                <li><a class="nav-link" href="{{ route('accreditation.index') }}">Manage Accreditation</a></li>
-                            @endcanany 
+                                <li><a class="nav-link" href="{{ route('home') }}">Accueil</a></li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown0" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                                        {{ __('DRT') }}
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown0">
+                                        <a class="dropdown-item" href="{{ route('DRT.index') }}">
+                                            {{ __('Afficher tous les DRTs') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('DRT.create') }}">
+                                            {{ __('Ajouter un DRT') }}
+                                        </a>
+
+
+
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown1" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                                        {{ __('Poste Comptable') }}
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+                                        <a class="dropdown-item" href="{{ route('PosteComptable.index') }}">
+                                            {{ __('Afficher tous les postes comptables') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('PosteComptable.create') }}">
+                                            {{ __('Ajouter un poste comptable') }}
+                                        </a>
+
+
+
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown2" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                                        {{ __('Ordonnateur') }}
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
+                                        <a class="dropdown-item" href="{{ route('Ordonnateur.index') }}">
+                                            {{ __('Afficher tous les Ordonnateurs') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('Ordonnateur.create') }}">
+                                            {{ __('Ajouter un Ordonnateur') }}
+                                        </a>
+
+
+
+                                    </div>
+                                </li>
+                            @endcanany
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                 <b>{{ Auth::user()->name }}</b> 
+                                    <i class="fa-solid fa-user"></i>
+                                    <b>{{ Auth::user()->name }}</b>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -162,14 +226,15 @@
                                     <a class="dropdown-item" href="locale/ar">
                                         {{ __('Arabe') }}
                                     </a>
-                                    
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
                                 </div>
@@ -181,32 +246,31 @@
         </nav>
 
         <main class="py-4">
-        @if ($message = Session::get('success'))
-                            <div class="alert alert-success text-center" role="alert">
-                                {{ $message }}
-                            </div>
-                        @endif
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{ $message }}
+                </div>
+            @endif
             @yield('content')
         </main>
- 
+
     </div>
     <br>
     <footer class="bg-light text-center">
 
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © {{ date('Y') }} Copyright:
-            <b><a class="text-dark" href="https:/www.mf.gov.dz/">جميع الحقوق محفوظة المديرية العامة للخزينة و التسيير
-                المحاسبي للعمليات المالية للدولة</a></b>
+            © {{ date('Y') }} {{ __('Copyright') }}:
+            {{ __('General Directorate of the Treasury and Accounting') }}.
         </div>
         <!-- Copyright -->
     </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>

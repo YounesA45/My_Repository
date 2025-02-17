@@ -28,19 +28,19 @@
                 @csrf
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="NumeroDenvoi">Numéro de l'envoi :</label>
+                        <label for="NumeroDenvoi">{{ __('Shipment number') }} :</label>
                         <input type="number" class="form-control" id="NumeroDenvoi" name="NumeroDenvoi" placeholder="1234">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="DateDenvoi">Date de l'envoi :</label>
+                        <label for="DateDenvoi">{{__('Date of sending')}} :</label>
                         <input type="date" class="form-control" id="DateDenvoi" name="DateDenvoi">
                     </div>
 
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="Sender">Expéditeur :</label>
+                        <label for="Sender">{{__('Sender')}} :</label>
                         <input type="text" class="form-control" id="Sender" name="Sender"
                             placeholder="EX: Directeur du commerce de la wilaya de M'sila">
                     </div>
@@ -51,22 +51,22 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="FamilyName">Nom :</label>
+                            <label for="FamilyName">{{__('Family Name')}} :</label>
                             <input type="text" class="form-control" id="FamilyName" name="FamilyName" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="Name">Prénom :</label>
+                            <label for="Name">{{__('First Name')}} :</label>
                             <input type="text" class="form-control" id="Name" name="Name" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="Poste">Poste :</label>
+                            <label for="Poste">{{__('Post')}} :</label>
                             <input type="text" class="form-control" id="Poste" name="Poste"
                                 placeholder="EX: Sous directeur du commerce" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="Wilaya">Wilaya :</label>
+                            <label for="Wilaya">{{__('District')}} :</label>
                             <input type="text" class="form-control" id="Wilaya" name="Wilaya" placeholder="Alger" required>
                         </div>
                     </div>
